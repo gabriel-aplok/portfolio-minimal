@@ -6,8 +6,14 @@ import { Circle } from "lucide-react";
 import Image from "next/image";
 import Starfield from "@/components/custom/starfield";
 
+interface GitHubProfile {
+  avatar_url: string;
+  name: string;
+  bio: string;
+}
+
 export default function Portfolio() {
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState<GitHubProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -47,19 +53,21 @@ export default function Portfolio() {
         speedFactor={0.05}
         backgroundColor="black" />
       <div className="min-h-screen w-full bg-gray-900 flex flex-col items-center justify-center p-4 space-y-8">
-        <div className="text-center">
-          <div className="relative w-32 h-32 mx-auto mb-4">
-            <Image
-              src={profile.avatar_url}
-              alt={`${profile.name}'s avatar`}
-              width={128}
-              height={128}
-              loading="lazy"
-              className="rounded-full border-4 border-gray-300" />
+        {profile && (
+          <div className="text-center">
+            <div className="relative w-32 h-32 mx-auto mb-4">
+              <Image
+                src={profile?.avatar_url || "Profile avatar"}
+                alt={`${profile?.name || "Profile name"}'s avatar`}
+                width={128}
+                height={128}
+                loading="lazy"
+                className="rounded-full border-4 border-gray-300" />
+            </div>
+            <h1 className="text-2xl font-bold text-gray-100">{profile?.name || "Profile name"}</h1>
+            <p className="text-lg text-gray-300">{profile?.bio || "Profile bio"}</p>
           </div>
-          <h1 className="text-2xl font-bold text-gray-100">{profile.name}</h1>
-          <p className="text-lg text-gray-300">{profile.bio}</p>
-        </div>
+        )}
         <div className="w-full max-w-2xl bg-gray-800 rounded-lg shadow-lg overflow-hidden">
           <div className="bg-gray-700 px-4 py-2 flex items-center">
             <div className="flex space-x-2">

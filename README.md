@@ -3,7 +3,7 @@
 A personal portfolio website showcasing my skills, projects, and contact information. This portfolio dynamically fetches data from my GitHub profile using the GitHub API and features an animated starfield background to add some cool visual effects.
 
 ### Live Demo
-[Check out the live demo](https://gabriel-aplok.com/portfolio-minimal) (Replace this with the actual URL once deployed)
+[Check out the live demo](https://portfolio-minimal-example.netlify.app) (Replace this with the actual URL once deployed)
 
 ---
 
